@@ -22,7 +22,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Мониторинг курсов валют");
 
 // Уникальный ID для связки фильтра и таблицы
-$gridId = "MY_CURRENCY_REPORT";
+$gridId = "currency_list_grid";
 
 // 1. Вывод фильтра
 $APPLICATION->IncludeComponent(
