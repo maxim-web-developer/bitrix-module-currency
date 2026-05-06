@@ -1,13 +1,10 @@
 <?php
 
 use Bitrix\Main\Loader;
-use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ModuleManager;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\Application;
 use My\Currency\CurrencyTable;
-
-Loc::loadMessages(__FILE__);
 
 class my_currency extends CModule
 {
