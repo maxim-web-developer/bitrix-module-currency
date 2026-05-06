@@ -13,7 +13,6 @@ use Bitrix\Main\Type\DateTime;
 
 /**
  * Класс для работы с таблицей курсов валют.
- * Соответствует PHP 8.2+ и Bitrix D7 ORM.
  */
 class CurrencyTable extends DataManager
 {

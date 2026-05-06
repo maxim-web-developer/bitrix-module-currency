@@ -55,6 +55,9 @@ class my_currency extends CModule
         ModuleManager::unRegisterModule($this->MODULE_ID);
     }
 
+    /**
+     * Установка файлов компонента
+     */
     public function InstallFiles(): bool
     {
         // Используем константу __DIR__ для надежности путей
@@ -67,6 +70,9 @@ class my_currency extends CModule
         return true;
     }
 
+    /**
+     * Удаление файлов компонента
+     */
     public function UnInstallFiles(): bool
     {
         $root = Application::getDocumentRoot();
@@ -90,6 +96,9 @@ class my_currency extends CModule
         return true;
     }
 
+    /**
+     * Создание таблицы
+     */
     public function InstallDB(): void
     {
         if (Loader::includeModule($this->MODULE_ID)) {
@@ -102,6 +111,9 @@ class my_currency extends CModule
         }
     }
 
+    /**
+     * Удаление таблицы
+     */
     public function UnInstallDB(): void
     {
         if (Loader::includeModule($this->MODULE_ID)) {
@@ -114,6 +126,9 @@ class my_currency extends CModule
         }
     }
 
+    /**
+     * Заполнение таблицы данными
+     */
     public function InstallData(): void
     {
         if (Loader::includeModule($this->MODULE_ID)) {
@@ -142,6 +157,9 @@ class my_currency extends CModule
         }
     }
 
+    /**
+     * Очистка данных таблицы
+     */
     public function UnInstallData(): void
     {
         if (Loader::includeModule($this->MODULE_ID)) {

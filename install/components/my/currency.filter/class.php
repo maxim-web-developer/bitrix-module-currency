@@ -8,11 +8,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
  */
 class CurrencyFilterComponent extends CBitrixComponent
 {
-    /**
-     * Выполнение компонента
-     *
-     * @return void
-     */
+
     public function executeComponent(): void
     {
         $this->arResult['GRID_ID'] = (string)($this->arParams['GRID_ID'] ?: 'currency_list_grid');

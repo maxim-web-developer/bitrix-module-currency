@@ -10,6 +10,9 @@ use Bitrix\Main\UI\Filter\Options as FilterOptions;
 use Bitrix\Main\Type\DateTime;
 use My\Currency\CurrencyTable;
 
+/**
+ * Компонент вывода курсов валют.
+ */
 class CurrencyListComponent extends CBitrixComponent
 {
 
@@ -22,18 +25,18 @@ class CurrencyListComponent extends CBitrixComponent
 
             $gridId = (string)($this->arParams['GRID_ID'] ?: 'currency_list_grid');
 
-            // 1. Постраничная навигация
+            // Постраничная навигация
             $nav = new PageNavigation("nav-currency");
             $nav->allowAllRecords(true)
                 ->setPageSize((int)($this->arParams['PAGE_ELEMENT_COUNT'] ?: 10))
                 ->initFromUri();
 
-            // 2. Обработка фильтра
+            // Обработка фильтра
             $filterOptions = new FilterOptions($gridId);
             $filterData = $filterOptions->getFilter([]);
             $filter = $this->prepareFilter($filterData);
 
-            // 3. Сортировка и выборка колонок
+            // Сортировка и выборка колонок
             $gridOptions = new GridOptions($gridId);
             $sort = $gridOptions->getSorting(['sort' => ['DATE' => 'DESC']]);
             $select = $gridOptions->getVisibleColumns();
@@ -42,7 +45,7 @@ class CurrencyListComponent extends CBitrixComponent
                 $select = ['ID', 'CODE', 'DATE', 'COURSE'];
             }
 
-            // 4. Получение данных
+            // Получение данных
             $dbResult = CurrencyTable::getList([
                 'select' => $select,
                 'filter' => $filter,
@@ -54,7 +57,7 @@ class CurrencyListComponent extends CBitrixComponent
 
             $nav->setRecordCount($dbResult->getCount());
 
-            // 5. Формирование результата
+            // Формирование результата
             $this->arResult = [
                 'GRID_ID' => $gridId,
                 'ROWS'    => [],
@@ -76,7 +79,7 @@ class CurrencyListComponent extends CBitrixComponent
     }
 
     /**
-     * Маппинг данных фильтра для ORM
+     * Подготовка для сбора данных фильтра
      */
     private function prepareFilter(array $filterData): array
     {
